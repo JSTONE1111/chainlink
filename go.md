@@ -353,6 +353,7 @@ flowchart LR
 	chainlink/deployment --> chainlink-testing-framework/lib
 	chainlink/deployment --> chainlink-ton/deployment
 	chainlink/deployment --> chainlink/v2
+	chainlink/deployment --> quarantine
 	click chainlink/deployment href "https://github.com/smartcontractkit/chainlink"
 	chainlink/integration-tests --> chainlink-testing-framework/havoc
 	chainlink/integration-tests --> chainlink-testing-framework/sentinel
@@ -371,8 +372,14 @@ flowchart LR
 	chainlink/system-tests/tests --> chainlink/core/scripts/cre/environment/examples/workflows/v1/proof-of-reserve/cron-based
 	chainlink/system-tests/tests --> chainlink/core/scripts/cre/environment/examples/workflows/v2/cron
 	chainlink/system-tests/tests --> chainlink/system-tests/lib
-	chainlink/system-tests/tests --> chainlink/system-tests/tests/smoke/cre/evmread
+	chainlink/system-tests/tests --> chainlink/system-tests/tests/smoke/cre/evm/evmread
+	chainlink/system-tests/tests --> chainlink/system-tests/tests/smoke/cre/evm/evmread-negative
 	click chainlink/system-tests/tests href "https://github.com/smartcontractkit/chainlink"
+	chainlink/system-tests/tests/smoke/cre/evm/evmread --> chainlink/system-tests/tests/smoke/cre/evmread
+	click chainlink/system-tests/tests/smoke/cre/evm/evmread href "https://github.com/smartcontractkit/chainlink"
+	chainlink/system-tests/tests/smoke/cre/evm/evmread-negative --> cre-sdk-go/capabilities/blockchain/evm
+	chainlink/system-tests/tests/smoke/cre/evm/evmread-negative --> cre-sdk-go/capabilities/scheduler/cron
+	click chainlink/system-tests/tests/smoke/cre/evm/evmread-negative href "https://github.com/smartcontractkit/chainlink"
 	chainlink/system-tests/tests/smoke/cre/evmread --> cre-sdk-go/capabilities/blockchain/evm
 	chainlink/system-tests/tests/smoke/cre/evmread --> cre-sdk-go/capabilities/scheduler/cron
 	click chainlink/system-tests/tests/smoke/cre/evmread href "https://github.com/smartcontractkit/chainlink"
@@ -407,10 +414,12 @@ flowchart LR
 	click grpc-proxy href "https://github.com/smartcontractkit/grpc-proxy"
 	libocr
 	click libocr href "https://github.com/smartcontractkit/libocr"
-	mcms --> chainlink-aptos
 	mcms --> chainlink-ccip/chains/solana
+	mcms --> chainlink-sui
 	mcms --> chainlink-testing-framework/framework
 	click mcms href "https://github.com/smartcontractkit/mcms"
+	quarantine
+	click quarantine href "https://github.com/smartcontractkit/quarantine"
 	smdkg --> libocr
 	smdkg --> tdh2/go/tdh2
 	click smdkg href "https://github.com/smartcontractkit/smdkg"
@@ -432,6 +441,8 @@ flowchart LR
 		 chainlink/load-tests
 		 chainlink/system-tests/lib
 		 chainlink/system-tests/tests
+		 chainlink/system-tests/tests/smoke/cre/evm/evmread
+		 chainlink/system-tests/tests/smoke/cre/evm/evmread-negative
 		 chainlink/system-tests/tests/smoke/cre/evmread
 		 chainlink/v2
 	end
