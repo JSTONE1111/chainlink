@@ -1,0 +1,9 @@
+core-soak-on-release:
+  permissions:
+    actions: read
+    contents: read
+    checks: write
+    id-token: write
+    pull-requests: write
+  needs: docker-core
+  uses: smartcontractkit/chainlink/.github/workflows/on-demand-ocr-soak-test.yml@e8fa774450995fd4544
