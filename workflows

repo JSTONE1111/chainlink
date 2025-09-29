@@ -1,2 +1,3 @@
 
 uses: smartcontractkit/chainlink/.github/workflows/on-demand-ocr-soak-test.ymlgrep -R "soak" .github/workflows
+git log -p .github/workflows/ | grep -C 5 "soak"
