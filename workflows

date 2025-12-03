@@ -2,3 +2,8 @@
 uses: smartcontractkit/chainlink/.github/workflows/on-demand-ocr-soak-test.ymlgrep -R "soak" .github/workflows
 git log -p .github/workflows/ | grep -C 5 "soak"
 github/workflows/verify.yml
+- name: Set up repo auth
+  run: |
+    git config user.name "github-actions[bot]"
+    git config user.email "github-actions[bot]@users.noreply.github.com"
+    git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/<your-org>/<your-repo>.git
