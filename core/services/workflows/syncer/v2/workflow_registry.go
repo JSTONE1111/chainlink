@@ -9,6 +9,7 @@ import (
 	"io"
 	"maps"
 	"math/big"
+	"slices"
 	"strings"
 	"sync"
 	"time"
@@ -740,6 +741,14 @@ func (w *workflowRegistry) getTicker(d time.Duration) <-chan time.Time {
 func isEmptyWorkflowID(wfID [32]byte) bool {
 	emptyID := [32]byte{}
 	return wfID == emptyID
+}
+
+// isZeroOwner checks if a workflow owner address is the zero address (all zeros).
+// This can indicate stale metadata from deleted workflows in the contract - there's a known
+// bug where deleted workflows aren't always fully removed from the contract state.
+func isZeroOwner(owner []byte) bool {
+	// does not contain non-zero bytes
+	return !slices.ContainsFunc(owner, func(b byte) bool { return b != 0 })
 }
 
 // newAllowlistedRequestsContractReader creates a contract reader specifically for fetching
